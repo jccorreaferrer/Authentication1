@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ApiAuthentication1.Api/ApiAuthentication1.Api.csproj" Id="f813aa7b-b0cb-4359-b82b-9c52d9f7615d" />
+  <Project Path="ApiAuthentication1.Application/ApiAuthentication1.Application.csproj" Id="a9130609-452c-48ba-8406-caa6c0db4c5e" />
+  <Project Path="ApiAuthentication1.Domain/ApiAuthentication1.Domain.csproj" Id="4cd4c87e-047b-4d6c-80a3-ed668431d502" />
+  <Project Path="ApiAuthentication1.Infrastructure/ApiAuthentication1.Infrastructure.csproj" Id="2b2c4964-fef4-4d0e-aa6a-8c209dfc4b44" />
+</Solution>

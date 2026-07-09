@@ -15,6 +15,10 @@ namespace ApiAuthentication1.Infrastructure.Repositories
         {
             _context = context;
         }
+        public async Task<IEnumerable<License>> GetAllAsync()
+        {
+            return await _context.Licenses.ToListAsync();
+        }
         public async Task<License> GetByIdAsync(int LicenseId)
         {
             return await _context.Licenses.FindAsync(LicenseId);

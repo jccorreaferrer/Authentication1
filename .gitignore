@@ -4,3 +4,4 @@ obj/
 *.zip
 *.bak
 *.publishSettings
+*.user

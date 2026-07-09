@@ -16,15 +16,29 @@ namespace ApiAuthentication1.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<AppUser> GetByUserNameAndAppIdAsync(string userName, int appId)
+        public async Task<AppUser> GetByUserNameAndAppIdAsync(string userName,  int appId)
         {
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.UserName == userName && u.AppId == appId);
         }
 
-        public async Task<AppUser> GetByEmailAndAppIdAsync(string email, int appId)
+        public async Task<AppUser> GetByEmailAndAppIdAsync(string email,  int appId)
         {
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == email && u.AppId == appId);
         }
+
+
+        public async Task<AppUser> GetByUserNamePassAndAppIdAsync(string userName, string passwordHash, int appId)
+        {
+            return await _context.AppUsers.FirstOrDefaultAsync(u => u.UserName == userName && u.PasswordHash == passwordHash && u.AppId == appId);
+        }
+
+        public async Task<AppUser> GetByEmailAndPassAppIdAsync(string email, string passwordHash, int appId)
+        {
+            return await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == email && u.PasswordHash == passwordHash && u.AppId == appId);
+        }
+
+
+
 
         public async Task<AppUser> GetByIdAsync(int appUserId)
         {

@@ -8,7 +8,7 @@ namespace ApiAuthentication1.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IAppUserService _appUserService;
@@ -34,7 +34,7 @@ namespace ApiAuthentication1.Api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Policy = "AdminOrManager")]
+        //[Authorize(Policy = "AdminOrManager")]
         public async Task<IActionResult> CreateUser([FromBody] AppUserInsertDTO appUserInsertDTO)
         {
             var (isSuccess, message, data) = await _appUserService.AddAsync(appUserInsertDTO);
@@ -43,7 +43,7 @@ namespace ApiAuthentication1.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Policy = "AdminOrManager")]
+        //[Authorize(Policy = "AdminOrManager")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] AppUserUpdateDTO appUserUpdateDTO)
         {
 
@@ -54,7 +54,7 @@ namespace ApiAuthentication1.Api.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Policy = "SuperAdminOnly")]
+        //[Authorize(Policy = "SuperAdminOnly")]
         public async Task<IActionResult> DeleteUser([FromBody] AppUserDeleteDTO appUserDeleteDTO)
         {
             var (isSuccess, message) = await _appUserService.DeleteAsync(appUserDeleteDTO);

@@ -26,6 +26,7 @@ namespace ApiAuthentication1.Infrastructure.Extensions
             services.AddScoped<IAppUserRepository, AppUserRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<ILicenseRepository, LicenseRepository>();
+            services.AddScoped<ICompanyAppRepository, CompanyAppRepository>();
 
             services.AddScoped<IAppService, AppService>();
             services.AddScoped<IAppRoleService, AppRoleService>();

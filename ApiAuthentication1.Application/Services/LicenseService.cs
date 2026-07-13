@@ -15,6 +15,12 @@ namespace ApiAuthentication1.Application.Services
         {
             _licenseRepository = licenseRepository;
         }
+        public async Task<IEnumerable<LicenseReadDTO>> GetAllAsync()
+        {
+            var items = await _licenseRepository.GetAllAsync();
+            return items.Select(p => LicenseMapper.ToReadDTO(p));
+        }
+
         public async Task<LicenseReadDTO> GetByIdAsync(int LicenseId)
         {
             var item = await _licenseRepository.GetByIdAsync(LicenseId);

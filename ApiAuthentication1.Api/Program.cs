@@ -12,6 +12,15 @@ namespace ApiAuthentication1.Api
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("OpenPolicy", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -24,6 +33,7 @@ namespace ApiAuthentication1.Api
             app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
+            app.UseCors("OpenPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();

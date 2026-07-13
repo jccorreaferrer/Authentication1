@@ -1,9 +1,7 @@
 ﻿using ApiAuthentication1.Application.DTOs;
 using ApiAuthentication1.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-// START CHANGE
 using System.Threading.Tasks;
-// END CHANGE
 
 namespace ApiAuthentication1.Api.Controllers
 {
@@ -31,6 +29,38 @@ namespace ApiAuthentication1.Api.Controllers
             }
             return Ok(new { token });
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginDTO login)
+        {
+            if (login == null)
+            {
+                return BadRequest("Request is required.");
+            }
+
+            if (string.IsNullOrWhiteSpace(login.User))
+            {
+                return BadRequest("User is required.");
+            }
+
+            if (string.IsNullOrWhiteSpace(login.Password))
+            {
+                return BadRequest("Password is required.");
+            }
+
+            if (login.ApplicationId <= 0)
+            {
+                return BadRequest("ApplicationId is required.");
+            }
+            var token = await _authService.LoginAsync(login.User, login.Password, login.ApplicationId);
+            if (token == null)
+            {
+                return Unauthorized("Invalid credentials or license.");
+            }
+
+            return Ok(new { token });
+        }
+
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO forgotPasswordDTO)
         {

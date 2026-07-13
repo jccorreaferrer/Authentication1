@@ -38,7 +38,6 @@ namespace ApiAuthentication1.Domain.Entities
         public virtual App App { get; set; }
         public virtual ICollection<AppUser> AppUsers { get; set; }
 
-        // START CHANGE: Removed Creator and Updater to avoid ambiguity
-        // END CHANGE
+
     }
 }

@@ -22,7 +22,7 @@ namespace ApiAuthentication1.Infrastructure.Data.Configurations
         public DbSet<PasswordResetToken> PasswordResetTokens { get; set; }
         public DbSet<LoginHistory> LoginHistories { get; set; }
         public DbSet<AuditLog> AuditLogs { get; set; }
-
+        public DbSet<CompanyApp> CompanyApps { get; set; }
         async Task<int> IAppDbContext.SaveChangesAsync()
         {
             return await SaveChangesAsync();

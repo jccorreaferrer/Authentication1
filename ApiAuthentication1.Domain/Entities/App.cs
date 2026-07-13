@@ -12,6 +12,7 @@ namespace ApiAuthentication1.Domain.Entities
         {
             AppUsers = new List<AppUser>();
             AppRoles = new List<AppRole>();
+            CompanyApps = new List<CompanyApp>();
         }
 
         [Key]
@@ -21,10 +22,6 @@ namespace ApiAuthentication1.Domain.Entities
         [MaxLength(100)]
         public string AppName { get; set; }
 
-        [Required]
-        [ForeignKey(nameof(Company))]
-        public int CompanyId { get; set; }
-
         public bool IsActive { get; set; }
 
         public int? CreationAppUserId { get; set; }
@@ -33,9 +30,9 @@ namespace ApiAuthentication1.Domain.Entities
         public int? UpdateAppUserId { get; set; }
         public DateTime? UpdateDate { get; set; }
 
-        public virtual Company Company { get; set; }
         public virtual ICollection<AppUser> AppUsers { get; set; }
         public virtual ICollection<AppRole> AppRoles { get; set; }
+        public virtual ICollection<CompanyApp> CompanyApps { get; set; }
         public virtual License License { get; set; }
 
         // START CHANGE

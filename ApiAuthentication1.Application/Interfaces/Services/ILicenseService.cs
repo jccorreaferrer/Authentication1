@@ -6,6 +6,7 @@ namespace ApiAuthentication1.Application.Interfaces.Services
 {
     public interface ILicenseService
     {
+        Task<IEnumerable<LicenseReadDTO>> GetAllAsync();
         Task<LicenseReadDTO> GetByIdAsync(int LicenseId);
         Task<LicenseReadDTO> GetByAppIdAsync(int appId);
         Task<(bool IsSuccess, string Message, LicenseReadDTO Data)> AddAsync(LicenseInsertDTO companyInsertDTO);

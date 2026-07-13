@@ -8,14 +8,14 @@ namespace ApiAuthentication1.Application.Mappings
 {
     public static class AppMapper
     {
-        public static AppReadDTO ToReadDTO(App app)
+        public static AppReadDTO ToReadDTO(App app, int companyId)
         {
             if (app == null) return null;
             return new AppReadDTO
             {
                 AppId = app.AppId,
+                CompanyId = companyId,
                 AppName = app.AppName,
-                CompanyId = app.CompanyId,
                 IsActive = app.IsActive,
                 CreationDate = app.CreationDate,
             };
@@ -25,7 +25,6 @@ namespace ApiAuthentication1.Application.Mappings
             return new App
             {
                 AppName = appInsertDTO.AppName,
-                CompanyId = appInsertDTO.CompanyId,
                 IsActive = true,
                 CreationDate = DateTime.Now,
             };

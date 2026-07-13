@@ -10,7 +10,7 @@ namespace ApiAuthentication1.Domain.Entities
     {
         public Company()
         {
-            Apps = new List<App>();
+            CompanyApps = new List<CompanyApp>();
         }
 
         [Key]
@@ -28,7 +28,7 @@ namespace ApiAuthentication1.Domain.Entities
         public int? UpdateAppUserId { get; set; }
         public DateTime? UpdateDate { get; set; }
 
-        public virtual ICollection<App> Apps { get; set; }
+        public virtual ICollection<CompanyApp> CompanyApps { get; set; }
 
         [ForeignKey(nameof(CreationAppUserId))]
         public virtual AppUser Creator { get; set; }

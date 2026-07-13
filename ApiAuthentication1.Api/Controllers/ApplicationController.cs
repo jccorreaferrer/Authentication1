@@ -23,7 +23,7 @@ namespace ApiAuthentication1.Api.Controllers
             return Ok(result);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCompany(int id)
+        public async Task<IActionResult> GetApplication(int id)
         {
             var result = await _appService.GetByIdAsync(id);
             if (result == null) return NotFound();
@@ -35,7 +35,7 @@ namespace ApiAuthentication1.Api.Controllers
         {
             var (isSuccess, message, data) = await _appService.AddAsync(appInsertDTO);
             if (!isSuccess) return BadRequest(new { error = message });
-            return CreatedAtAction(nameof(GetCompany), new { id = data.CompanyId }, data);
+            return CreatedAtAction(nameof(GetApplication), new { id = data.AppId }, data);
         }
         [HttpPut("{id}")]
         //[Authorize(Policy = "AdminOrManager")]

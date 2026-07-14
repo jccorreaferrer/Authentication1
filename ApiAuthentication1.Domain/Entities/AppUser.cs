@@ -66,7 +66,6 @@ namespace ApiAuthentication1.Domain.Entities
         [ForeignKey(nameof(UpdateAppUserId))]
         public virtual AppUser Updater { get; set; }
 
-        // START CHANGE
         [InverseProperty(nameof(App.Creator))]
         public virtual ICollection<App> CreatedApps { get; set; }
 
@@ -84,6 +83,5 @@ namespace ApiAuthentication1.Domain.Entities
 
         [InverseProperty(nameof(PasswordResetToken.AppUser))]
         public virtual ICollection<PasswordResetToken> PasswordResetTokens { get; set; }
-        // END CHANGE
     }
 }

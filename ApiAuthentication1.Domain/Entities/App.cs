@@ -35,7 +35,6 @@ namespace ApiAuthentication1.Domain.Entities
         public virtual ICollection<CompanyApp> CompanyApps { get; set; }
         public virtual License License { get; set; }
 
-        // START CHANGE
         [InverseProperty(nameof(AppUser.CreatedApps))]
         [ForeignKey(nameof(CreationAppUserId))]
         public virtual AppUser Creator { get; set; }
@@ -43,6 +42,5 @@ namespace ApiAuthentication1.Domain.Entities
         [InverseProperty(nameof(AppUser.UpdatedApps))]
         [ForeignKey(nameof(UpdateAppUserId))]
         public virtual AppUser Updater { get; set; }
-        // END CHANGE
     }
 }

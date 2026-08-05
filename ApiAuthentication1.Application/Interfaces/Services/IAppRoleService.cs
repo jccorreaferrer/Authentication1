@@ -9,6 +9,7 @@ namespace ApiAuthentication1.Application.Interfaces.Services
     {
         Task<AppRoleReadDTO> GetByIdAsync(int appRoleId);
         Task<IEnumerable<AppRoleReadDTO>> GetByAppIdAsync(int appId);
+        Task<List<AppRoleReadDTO>> GetListAsync();
         Task<(bool IsSuccess, string Message, AppRoleReadDTO Data)> AddAsync(AppRoleInsertDTO appRoleInsertDTO);
         Task<(bool IsSuccess, string Message)> UpdateAsync(AppRoleUpdateDTO appRoleUpdateDTO);
         Task<(bool IsSuccess, string Message)> DeleteAsync(AppRoleDeleteDTO appRoleDeleteDTO);

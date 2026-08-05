@@ -29,6 +29,11 @@ namespace ApiAuthentication1.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<AppRole>> GetListAsync()
+        {
+            return await _context.AppRoles.Where(m => m.IsActive).OrderBy(p => p.AppId).ThenBy(p => p.AppRoleId).ToListAsync();
+        }
+
         public async Task AddAsync(AppRole appRole)
         {
             await _context.AppRoles.AddAsync(appRole);

@@ -11,15 +11,22 @@ namespace ApiAuthentication1.Api.Controllers
     //[Authorize]
     public class RoleController : ControllerBase
     {
-        private readonly IAppRoleService _appRoleService;
+        private readonly IAppRoleService _IService;
         public RoleController(IAppRoleService appRoleService)
         {
-                _appRoleService = appRoleService;
+                _IService = appRoleService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetList()
+        {
+            var result = await _IService.GetListAsync();
+            return Ok(result);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRole(int id)
         {
-            var result = await _appRoleService.GetByIdAsync(id);
+            var result = await _IService.GetByIdAsync(id);
             if (result == null) return NotFound();
             return Ok(result);
         }
@@ -27,7 +34,7 @@ namespace ApiAuthentication1.Api.Controllers
         [HttpGet("by-app/{appId}")]
         public async Task<IActionResult> GetByAppIdAsync(int appId)
         {
-            var result = await _appRoleService.GetByIdAsync(appId);
+            var result = await _IService.GetByIdAsync(appId);
             if (result == null) return NotFound();
             return Ok(result);
         }
@@ -35,7 +42,7 @@ namespace ApiAuthentication1.Api.Controllers
         //[Authorize(Policy = "AdminOrManager")]
         public async Task<IActionResult> CreateRole([FromBody] AppRoleInsertDTO appRoleInsertDTO)
         {
-            var (isSuccess, message, data) = await _appRoleService.AddAsync(appRoleInsertDTO);
+            var (isSuccess, message, data) = await _IService.AddAsync(appRoleInsertDTO);
             if (!isSuccess) return BadRequest(new { error = message });
             return CreatedAtAction(nameof(GetRole), new { id = data.AppRoleId}, data);
         }
@@ -44,7 +51,7 @@ namespace ApiAuthentication1.Api.Controllers
         public async Task<IActionResult> UpdateRole(int id, [FromBody] AppRoleUpdateDTO appRoleUpdateDTO)
         {
             if (id != appRoleUpdateDTO.AppRoleId) return BadRequest("ID mismatch");
-            var (isSuccess, message) = await _appRoleService.UpdateAsync(appRoleUpdateDTO);
+            var (isSuccess, message) = await _IService.UpdateAsync(appRoleUpdateDTO);
             if (!isSuccess) return BadRequest(new { error = message });
             return NoContent();
         }
@@ -52,7 +59,7 @@ namespace ApiAuthentication1.Api.Controllers
         //[Authorize(Policy = "SuperAdminOnly")]
         public async Task<IActionResult> DeleteRole([FromBody] AppRoleDeleteDTO appRoleDeleteDTO)
         {
-            var (isSuccess, message) = await _appRoleService.DeleteAsync(appRoleDeleteDTO);
+            var (isSuccess, message) = await _IService.DeleteAsync(appRoleDeleteDTO);
             if (!isSuccess) return BadRequest(new { error = message });
             return NoContent();
         }

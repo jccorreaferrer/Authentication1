@@ -8,6 +8,7 @@ namespace ApiAuthentication1.Application.Interfaces.Repositories
     {
         Task<AppRole> GetByIdAsync(int appRoleId);
         Task<IEnumerable<AppRole>> GetByAppIdAsync(int appId);
+        Task<List<AppRole>> GetListAsync();
         Task AddAsync(AppRole appRole);
         Task UpdateAsync(AppRole appRole);
         Task DeleteAsync(AppRole appRole);

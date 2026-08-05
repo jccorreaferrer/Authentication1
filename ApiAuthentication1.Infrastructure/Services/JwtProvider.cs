@@ -26,8 +26,10 @@ namespace ApiAuthentication1.Infrastructure.Services
                 new Claim(JwtRegisteredClaimNames.Sub, appUser.AppUserId.ToString()),
                 new Claim("AppUserId", appUser.AppUserId.ToString()),
                 new Claim("AppId", appUser.AppId.ToString()),
+                new Claim("CompanyId", appUser.CompanyId.ToString()),
                 new Claim("AppRoleId", appUser.AppRoleId.ToString()),
                 new Claim("IsPaid", isPaid.ToString().ToLower()),
+                new Claim("FullName", appUser.FullName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 

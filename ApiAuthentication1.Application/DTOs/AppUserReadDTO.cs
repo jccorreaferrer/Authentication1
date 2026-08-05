@@ -10,6 +10,7 @@ namespace ApiAuthentication1.Application.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int AppId { get; set; }
+        public int CompanyId { get; set; }
         public int AppRoleId { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreationDate { get; set; }

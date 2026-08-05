@@ -11,6 +11,7 @@ namespace ApiAuthentication1.Domain.Entities
         public Company()
         {
             CompanyApps = new List<CompanyApp>();
+            AppUsers = new List<AppUser>();
         }
 
         [Key]
@@ -35,5 +36,8 @@ namespace ApiAuthentication1.Domain.Entities
 
         [ForeignKey(nameof(UpdateAppUserId))]
         public virtual AppUser Updater { get; set; }
+
+        [InverseProperty(nameof(AppUser.Company))]
+        public virtual ICollection<AppUser> AppUsers { get; set; }
     }
 }

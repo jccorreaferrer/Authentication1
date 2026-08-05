@@ -19,17 +19,6 @@ namespace ApiAuthentication1.Api.Controllers
             _passwordResetService = passwordResetService;
         }
 
-        [HttpGet("login")]
-        public async Task<IActionResult> Login([FromQuery] string user, [FromQuery] string password, [FromQuery] int applicationId)
-        {
-            var token = await _authService.LoginAsync(user, password, applicationId);
-            if (token == null)
-            {
-                return Unauthorized("Invalid credentials or license.");
-            }
-            return Ok(new { token });
-        }
-
         [HttpPost("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO login)
         {

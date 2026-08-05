@@ -38,9 +38,15 @@ namespace ApiAuthentication1.Domain.Entities
         [MaxLength(100)]
         public string LastName { get; set; }
 
+        [NotMapped]
+        public string FullName => $"{FirstName} {LastName}".Trim();
+
         [Required]
         [ForeignKey(nameof(App))]
         public int AppId { get; set; }
+
+        [Required]
+        public int CompanyId { get; set; }
 
         [Required]
         [ForeignKey(nameof(AppRole))]
@@ -56,6 +62,9 @@ namespace ApiAuthentication1.Domain.Entities
 
         [InverseProperty(nameof(App.AppUsers))]
         public virtual App App { get; set; }
+
+        [ForeignKey(nameof(CompanyId))]
+        public virtual Company Company { get; set; }
 
         [InverseProperty(nameof(AppRole.AppUsers))]
         public virtual AppRole AppRole { get; set; }

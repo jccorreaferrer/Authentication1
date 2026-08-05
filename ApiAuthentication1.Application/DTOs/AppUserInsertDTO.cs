@@ -8,6 +8,7 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int AppId { get; set; }
+        public int CompanyId { get; set; }
         public int AppRoleId { get; set; }
     }
 }

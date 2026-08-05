@@ -12,6 +12,7 @@ namespace ApiAuthentication1.Application.Mappings
             return new AppUserReadDTO
             {
                 AppUserId = user.AppUserId,
+                CompanyId = user.CompanyId,
                 UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
@@ -34,6 +35,7 @@ namespace ApiAuthentication1.Application.Mappings
                 LastName = appUserInsertDTO.LastName,
                 AppId = appUserInsertDTO.AppId,
                 AppRoleId = appUserInsertDTO.AppRoleId,
+                CompanyId = appUserInsertDTO.CompanyId,
                 IsActive = true,
                 CreationDate = System.DateTime.Now
             };

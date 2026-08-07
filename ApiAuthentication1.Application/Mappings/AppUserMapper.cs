@@ -30,7 +30,7 @@ namespace ApiAuthentication1.Application.Mappings
             {
                 UserName = appUserInsertDTO.UserName,
                 Email = appUserInsertDTO.Email,
-                PasswordHash = appUserInsertDTO.Password, // Placeholder: will be hashed later
+                PasswordHash = appUserInsertDTO.Password, 
                 FirstName = appUserInsertDTO.FirstName,
                 LastName = appUserInsertDTO.LastName,
                 AppId = appUserInsertDTO.AppId,

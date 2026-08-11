@@ -1,9 +1,10 @@
-﻿using ApiAuthentication1.Domain.Entities;
+﻿using ApiAuthentication1.Application.DTOs;
 using ApiAuthentication1.Application.Interfaces.Repositories;
+using ApiAuthentication1.Domain.Entities;
 using ApiAuthentication1.Infrastructure.Data;
+using ApiAuthentication1.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using ApiAuthentication1.Infrastructure.Data.Configurations;
 
 namespace ApiAuthentication1.Infrastructure.Repositories
 {
@@ -26,7 +27,6 @@ namespace ApiAuthentication1.Infrastructure.Repositories
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == email && u.AppId == appId);
         }
 
-
         public async Task<AppUser> GetByUserNamePassAndAppIdAsync(string userName, string passwordHash, int appId)
         {
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.UserName == userName && u.PasswordHash == passwordHash && u.AppId == appId);
@@ -37,17 +37,16 @@ namespace ApiAuthentication1.Infrastructure.Repositories
             return await _context.AppUsers.FirstOrDefaultAsync(u => u.Email == email && u.PasswordHash == passwordHash && u.AppId == appId);
         }
 
-
-
-
         public async Task<AppUser> GetByIdAsync(int appUserId)
         {
             return await _context.AppUsers.FindAsync(appUserId);
         }
+      
         public async Task<IEnumerable<AppUser>> GetAllAsync()
         {
             return await _context.AppUsers.ToListAsync();
         }
+      
         public async Task AddAsync(AppUser appUser)
         {
             await _context.AppUsers.AddAsync(appUser);
@@ -65,5 +64,11 @@ namespace ApiAuthentication1.Infrastructure.Repositories
             _context.AppUsers.Remove(appUser);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<AppUser>> GetByIdsAsync(AppUserGetByIdsDTO dto)
+        {
+            return await _context.AppUsers.Where(u => dto.Ids.Contains(u.AppUserId)).ToListAsync();
+        }
+
     }
 }

@@ -27,6 +27,7 @@ namespace ApiAuthentication1.Application.Services
             var user = await _appUserRepository.GetByIdAsync(id);
             return AppUserMapper.ToReadDTO(user);
         }
+
         public async Task<(bool IsSuccess, string Message, AppUserReadDTO Data)> AddAsync(AppUserInsertDTO appUserInsertDTO)
         {
             var user = AppUserMapper.ToAppUser(appUserInsertDTO);
@@ -69,5 +70,13 @@ namespace ApiAuthentication1.Application.Services
             return (true, null);
 
         }
+
+        public async Task<IEnumerable<AppUserReadDTO>> GetByIdsAsync(AppUserGetByIdsDTO dto)
+        {
+            var users = await _appUserRepository.GetByIdsAsync(dto);
+            return users.Select(u => AppUserMapper.ToReadDTO(u));
+        }
+
+
     }
 }

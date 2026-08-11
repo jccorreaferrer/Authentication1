@@ -1,4 +1,5 @@
-﻿using ApiAuthentication1.Domain.Entities;
+﻿using ApiAuthentication1.Application.DTOs;
+using ApiAuthentication1.Domain.Entities;
 using System.Threading.Tasks;
 
 namespace ApiAuthentication1.Application.Interfaces.Repositories
@@ -14,5 +15,6 @@ namespace ApiAuthentication1.Application.Interfaces.Repositories
         Task AddAsync(AppUser appUser);
         Task UpdateAsync(AppUser appUser);
         Task DeleteAsync(AppUser appUser);
+        Task<IEnumerable<AppUser>> GetByIdsAsync(AppUserGetByIdsDTO dto);
     }
 }

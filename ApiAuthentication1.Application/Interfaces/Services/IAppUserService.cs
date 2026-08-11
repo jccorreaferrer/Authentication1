@@ -12,6 +12,6 @@ namespace ApiAuthentication1.Application.Interfaces.Services
         Task<(bool IsSuccess, string Message)> UpdateAsync(AppUserUpdateDTO appUserUpdateDTO);
         Task<(bool IsSuccess, string Message)> DeleteAsync(AppUserDeleteDTO appUserDeleteDTO);
         Task<(bool IsSuccess, string Message)> ChangePasswordAsync(AppUserChangePasswordDTO appUserChangePasswordDTO);
-
+        Task<IEnumerable<AppUserReadDTO>> GetByIdsAsync(AppUserGetByIdsDTO dto);
     }
 }

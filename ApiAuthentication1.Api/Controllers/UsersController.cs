@@ -69,5 +69,12 @@ namespace ApiAuthentication1.Api.Controllers
             if (!isSuccess) return BadRequest(new { error = message });
             return NoContent();
         }
+
+        [HttpPost("GetByIds")]
+        public async Task<IActionResult> GetByIds([FromBody] AppUserGetByIdsDTO listId)
+        {
+            var result = await _appUserService.GetByIdsAsync(listId);
+            return Ok(result);
+        }
     }
 }

@@ -18,7 +18,8 @@ namespace ApiAuthentication1.Application.Mappings
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 AppId = user.AppId,
-                AppRoleId = user.AppRoleId            };
+                AppRoleId = user.AppRoleId,
+            };
         }
 
         public static AppUser ToAppUser(AppUserInsertDTO appUserInsertDTO)
@@ -34,7 +35,8 @@ namespace ApiAuthentication1.Application.Mappings
                 AppRoleId = appUserInsertDTO.AppRoleId,
                 CompanyId = appUserInsertDTO.CompanyId,
                 IsActive = true,
-                CreationDate = System.DateTime.Now
+                CreationDate = System.DateTime.Now,
+                CreationAppUserId = appUserInsertDTO.CreationAppUserId,
             };
         }
 

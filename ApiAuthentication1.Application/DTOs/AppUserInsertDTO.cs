@@ -10,5 +10,6 @@
         public int AppId { get; set; }
         public int CompanyId { get; set; }
         public int AppRoleId { get; set; }
+        public int? CreationAppUserId { get; set; }
     }
 }

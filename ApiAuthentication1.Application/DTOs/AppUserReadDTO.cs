@@ -9,6 +9,7 @@ namespace ApiAuthentication1.Application.DTOs
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}".Trim();
         public int AppId { get; set; }
         public int CompanyId { get; set; }
         public int AppRoleId { get; set; }
